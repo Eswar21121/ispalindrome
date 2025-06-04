@@ -1,0 +1,31 @@
+import java.util.Arrays;
+
+class TreeNode {
+    int data;
+    TreeNode left;
+    TreeNode right;
+
+    public TreeNode(int val) {
+        this.data = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class Main {
+
+    public static TreeNode createBT(int[] arr, int i, int n) {
+        if (i > n) {
+            return null;
+        }
+        TreeNode root = new TreeNode(arr[i - 1]);
+        root.left = createBT(arr, 2 * i, n);
+        root.right = createBT(arr, 2 * i + 1, n);
+        return root;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        TreeNode tree = createBT(arr, 1, arr.length);
+    }
+}
